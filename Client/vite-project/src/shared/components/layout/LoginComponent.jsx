@@ -34,7 +34,8 @@ export const LoginComponent = () => {
             justifyContent: 'center',
             alignItems: 'center',
             minHeight: '100vh',
-            background: '#f0f2f5'
+            background: '#f0f2f5',
+            padding: '20px'
         }}>
             <div className="container">
                 <h2 className="heading">Login</h2>

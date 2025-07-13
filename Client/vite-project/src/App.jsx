@@ -7,14 +7,24 @@ import { BuscarPage } from './features/dashboard/BuscarPage'
 import { BancosPage } from './features/dashboard/BancosPage'
 import { SuscripcionesPage } from './features/dashboard/SuscripcionesPage'
 import { ContabilidadPage } from './features/dashboard/ContabilidadPage'
-
-
+import PWAInstallButton from './shared/components/pwa/PWAInstallButton'
 
 function App() {
   const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
   return (
     <>
+      {/* Botón de instalación PWA flotante */}
+      <div style={{ 
+        position: 'fixed', 
+        top: '20px', 
+        right: '20px', 
+        zIndex: 1050,
+        opacity: 0.9
+      }}>
+        <PWAInstallButton />
+      </div>
+      
       <Routes>
         <Route path="/login" element={<LoginRuta />} />
         <Route path="/dashboard" element={<DashboardPage />} />

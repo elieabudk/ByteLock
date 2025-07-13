@@ -1,0 +1,102 @@
+{
+  "name": "ByteLock - Secure Personal Data Manager",
+  "short_name": "ByteLock",
+  "description": "Secure personal data management for finances, passwords, and subscriptions",
+  "start_url": "/login",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#4f46e5",
+  "orientation": "portrait-primary",
+  "categories": ["finance", "productivity", "security"],
+  "lang": "es",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+      "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "Access your main dashboard",
+      "url": "/dashboard",
+      "icons": [
+        {
+          "src": "/logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Bancos",
+      "short_name": "Bancos",
+      "description": "Manage your bank accounts",
+      "url": "/bancos",
+      "icons": [
+        {
+          "src": "/logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contabilidad",
+      "short_name": "Contabilidad",
+      "description": "Track income and expenses",
+      "url": "/contabilidad",
+      "icons": [
+        {
+          "src": "/logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Suscripciones",
+      "short_name": "Suscripciones",
+      "description": "Manage your subscriptions",
+      "url": "/suscripciones",
+      "icons": [
+        {
+          "src": "/logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "scope": "/",
+  "protocol_handlers": [
+    {
+      "protocol": "web+bytelock",
+      "url": "/?action=%s"
+    }
+  ]
+} 
