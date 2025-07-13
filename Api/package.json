@@ -11,7 +11,8 @@
     "install:frontend": "cd ../Client/vite-project && npm install",
     "build:frontend": "cd ../Client/vite-project && npm run build",
     "copy:frontend": "echo \"Frontend build completed!\"",
-    "deploy": "npm run build && NODE_ENV=production npm start"
+    "deploy": "npm run build && NODE_ENV=production npm start",
+    "check-env": "node check-env.js"
   },
   "keywords": [],
   "author": "",

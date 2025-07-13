@@ -6,6 +6,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import mongoose from 'mongoose';
 
 // Para obtener __dirname en ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -27,11 +28,46 @@ const corsOptions = {
     "https://web-production-d61d.up.railway.app",
     "http://localhost:5173"
   ],
-  credentials: true
+  credentials: true,
+  optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
 
+// Headers de seguridad para Google OAuth
+app.use((req, res, next) => {
+  // Configurar headers para Google OAuth
+  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin-allow-popups');
+  res.setHeader('Cross-Origin-Embedder-Policy', 'unsafe-none');
+  
+  // Headers adicionales de seguridad
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('X-XSS-Protection', '1; mode=block');
+  
+  next();
+});
+
 connectDB();
+
+// Endpoint de diagnóstico para verificar configuración
+app.get('/api/health', (req, res) => {
+  const envStatus = {
+    NODE_ENV: process.env.NODE_ENV || 'not set',
+    MONGO_URI: process.env.MONGO_URI ? '✓ Configurado' : '✗ No configurado',
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID ? '✓ Configurado' : '✗ No configurado',
+    JWT_SECRET: process.env.JWT_SECRET ? '✓ Configurado' : '✗ No configurado',
+    mongoStatus: mongoose.connection.readyState === 1 ? '✅ Conectado' : '❌ Desconectado',
+    timestamp: new Date().toISOString()
+  };
+  
+  console.log('🔍 Health Check:', envStatus);
+  
+  res.json({
+    status: 'OK',
+    environment: envStatus,
+    message: 'Servidor funcionando correctamente'
+  });
+});
 
 // Rutas de la API (IMPORTANTE: van antes de los archivos estáticos)
 app.use("/api", routes);
