@@ -23,7 +23,10 @@ app.use(express.json());
 
 // CORS configurado para producción y desarrollo
 const corsOptions = {
-  origin: process.env.NODE_ENV === 'production' ? true : "http://localhost:5173",
+  origin: [
+    "https://web-production-d61d.up.railway.app",
+    "http://localhost:5173"
+  ],
   credentials: true
 };
 app.use(cors(corsOptions));
