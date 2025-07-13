@@ -5,7 +5,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 
 import App from './App.jsx'
 
-const clientId = "870858868997-k805fbel52feb59fqgiod48ci9aaedge.apps.googleusercontent.com";
+const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || "870858868997-k805fbel52feb59fqgiod48ci9aaedge.apps.googleusercontent.com";
 
 // Registrar Service Worker para PWA
 if ('serviceWorker' in navigator) {

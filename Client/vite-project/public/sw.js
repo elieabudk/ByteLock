@@ -5,7 +5,6 @@ const DYNAMIC_CACHE_NAME = 'bytelock-dynamic-v1.0.0';
 
 // Archivos estáticos para cachear
 const STATIC_FILES = [
-  '/',
   '/index.html',
   '/manifest.json',
   '/logo.png',
