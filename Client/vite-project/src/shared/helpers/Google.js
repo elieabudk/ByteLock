@@ -5,7 +5,7 @@ export async function authGoogle(credentialResponse) {
   const token = credentialResponse.credential;
   const userInfo = jwtDecode(token); // contiene nombre, email, picture
 
-  console.log("Información del usuario:", userInfo);
+  console.log("Información del usuario es esta si:", userInfo);
 
   // ENVÍAS EL TOKEN AL BACKEND
   const response = await fetch(API_URLS.GOOGLE_AUTH, {

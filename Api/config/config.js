@@ -46,15 +46,6 @@ export const connectDB = async () => {
       stack: error.stack
     });
     
-    // En producción, no salir del proceso inmediatamente
-    // Permitir que Railway maneje el restart
-    if (process.env.NODE_ENV === 'production') {
-      console.log("🔄 Reintentando conexión en 5 segundos...");
-      setTimeout(() => {
-        connectDB();
-      }, 5000);
-    } else {
-      process.exit(1);
-    }
+  
   }
 };

@@ -33,19 +33,7 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-// Headers de seguridad para Google OAuth
-app.use((req, res, next) => {
-  // Configurar headers para Google OAuth
-  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin-allow-popups');
-  res.setHeader('Cross-Origin-Embedder-Policy', 'unsafe-none');
-  
-  // Headers adicionales de seguridad
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('X-Frame-Options', 'DENY');
-  res.setHeader('X-XSS-Protection', '1; mode=block');
-  
-  next();
-});
+
 
 connectDB();
 
