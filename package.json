@@ -1,0 +1,25 @@
+{
+  "name": "bytelock-fullstack",
+  "version": "1.0.0",
+  "description": "ByteLock - Secure personal data management",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd Api && npm run dev",
+    "dev:frontend": "cd Client/vite-project && npm run dev",
+    "build": "cd Api && npm run build",
+    "deploy": "cd Api && npm run deploy",
+    "install:all": "npm install && cd Api && npm install && cd ../Client/vite-project && npm install",
+    "start": "cd Api && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "security",
+    "password-manager",
+    "finance",
+    "encryption"
+  ],
+  "author": "",
+  "license": "ISC"
+}

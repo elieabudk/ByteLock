@@ -1,0 +1,156 @@
+.container {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    padding: 5px 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+    margin-bottom: 10px;
+}
+
+.cardHeader {
+    background-color: #0b4a81;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.dateSection {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 12px;
+    border: 2px solid #dee2e6;
+    margin-bottom: 25px;
+}
+
+.dateLabel {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.dateInput {
+    border-radius: 8px;
+    border: 2px solid #ced4da;
+    padding: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.dateInput:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.summaryContainer {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+}
+
+.summaryCard {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid #dee2e6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.summaryCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.incomeCard {
+    border-left: 5px solid #28a745;
+    background-color: #f8fff9;
+}
+
+.incomeCard:hover {
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.2);
+}
+
+.expenseCard {
+    border-left: 5px solid #dc3545;
+    background-color: #fff8f8;
+}
+
+.expenseCard:hover {
+    box-shadow: 0 8px 25px rgba(220, 53, 69, 0.2);
+}
+
+.availableCard {
+    border-left: 5px solid #007bff;
+    background-color: #f8fbff;
+}
+
+.availableCard:hover {
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.2);
+}
+
+.summaryTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+.summaryAmount {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.incomeAmount {
+    color: #28a745;
+}
+
+.expenseAmount {
+    color: #dc3545;
+}
+
+.availableAmount {
+    color: #007bff;
+}
+
+.filterButton {
+    background-color: #6c757d;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.filterButton:hover {
+    background-color: #5691bd;
+}
+
+.tableContainer {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 50;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+}

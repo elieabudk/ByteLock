@@ -1,0 +1,238 @@
+/* Dashboard Container Styles */
+.container-fluid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* Header Styles */
+h1 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+h2 {
+    color: #34495e;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0rem;
+    padding-bottom: 0.05rem;
+    border-bottom: 2px solid #3498db;
+}
+
+/* Table Container Styles */
+.table-container {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0rem 0;
+    font-size: 0.95rem;
+}
+
+thead {
+    background-color: #f8f9fa;
+}
+
+th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 2px solid #e9ecef;
+    white-space: nowrap;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid #e9ecef;
+    color: #495057;
+}
+
+tr:hover {
+    background-color: #f8f9fa;
+    transition: background-color 0.2s ease;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .container-fluid {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin: 1.5rem 0;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0rem;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    th, td {
+        padding: 0.75rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container-fluid {
+        padding: 0.8rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        margin: 1rem 0;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+        margin-bottom: 0rem;
+    }
+
+    table {
+        font-size: 0.85rem;
+    }
+
+    th, td {
+        padding: 0.5rem;
+    }
+}
+
+/* Animation for table containers */
+.table-container {
+    transition: transform 0.3s ease;
+}
+
+.table-container:hover {
+    transform: translateY(-5px);
+}
+
+/* Custom scrollbar for better UX */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
+}
+
+/* Table Header Animation */
+th {
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+th:hover {
+    background-color: #e9ecef;
+}
+
+/* Table Row Striping */
+tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Table Cell Content */
+td {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Table Container with Scroll */
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Table Header Fixed on Scroll */
+@media screen and (min-width: 768px) {
+    .table-container {
+        position: relative;
+    }
+
+    thead {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+}
+
+/* Table Loading State */
+.table-loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Table Empty State */
+.table-empty {
+    text-align: center;
+    padding: 2rem;
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Table Action Buttons */
+.table-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.table-actions button {
+    padding: 0.25rem 0.5rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #e9ecef;
+    color: #495057;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.table-actions button:hover {
+    background-color: #dee2e6;
+    transform: translateY(-1px);
+}
+
+/* Table Search/Filter */
+.table-search {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.table-search:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
