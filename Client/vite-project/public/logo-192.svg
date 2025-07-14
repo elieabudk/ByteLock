@@ -1,1 +1,32 @@
- 
+<svg width="192" height="192" viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="192" height="192" fill="url(#grad)" rx="32"/>
+  
+  <!-- Lock Icon -->
+  <g transform="translate(48, 32)">
+    <!-- Lock Body -->
+    <rect x="0" y="56" width="96" height="80" fill="white" rx="12" stroke="none"/>
+    
+    <!-- Lock Shackle -->
+    <path d="M 20 56 Q 20 28 48 28 Q 76 28 76 56" fill="none" stroke="white" stroke-width="8"/>
+    
+    <!-- Keyhole -->
+    <circle cx="48" cy="88" r="8" fill="url(#grad)"/>
+    <rect x="44" y="88" width="8" height="16" fill="url(#grad)"/>
+  </g>
+  
+  <!-- ByteLock Text -->
+  <text x="96" y="170" 
+        font-family="Arial, sans-serif" 
+        font-size="16" 
+        font-weight="bold" 
+        text-anchor="middle" 
+        fill="white">ByteLock</text>
+</svg> 
