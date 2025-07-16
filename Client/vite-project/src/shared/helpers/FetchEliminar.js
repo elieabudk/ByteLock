@@ -1,5 +1,6 @@
 export const FetchEliminar = async (index, dataTable, onActualizar) => {
     // Validaciones para evitar errores
+    
     if (!dataTable || !Array.isArray(dataTable) || index < 0 || index >= dataTable.length) {
         console.error('Error: dataTable inválido o índice fuera de rango');
         return;

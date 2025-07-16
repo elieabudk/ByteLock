@@ -95,12 +95,8 @@ export const useServiceWorker = () => {
     };
   }, []);
 
-  // Registrar automáticamente al montar
-  useEffect(() => {
-    if (import.meta.env.MODE === 'production') {
-      registerServiceWorker();
-    }
-  }, []);
+  // Registro manual disponible (no automático para evitar duplicados)
+  // El registro se hace en main.jsx
 
   // Listener para mensajes del Service Worker
   useEffect(() => {

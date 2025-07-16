@@ -2,7 +2,7 @@
   "name": "ByteLock - Secure Personal Data Manager",
   "short_name": "ByteLock",
   "description": "Secure personal data management for finances, passwords, and subscriptions",
-  "start_url": "/login",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#1a1a1a",
   "theme_color": "#4f46e5",
@@ -10,7 +10,27 @@
   "categories": ["finance", "productivity", "security"],
   "lang": "es",
   "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false,
   "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "/logo.png",
       "sizes": "192x192",
@@ -24,21 +44,7 @@
       "purpose": "any maskable"
     }
   ],
-  "screenshots": [
-    {
-      "src": "/screenshot-desktop.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
-    },
-    {
-      "src": "/screenshot-mobile.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow"
-    }
-  ],
-      "shortcuts": [
+  "shortcuts": [
     {
       "name": "Dashboard",
       "short_name": "Dashboard",
@@ -86,17 +92,6 @@
           "sizes": "96x96"
         }
       ]
-    }
-  ],
-  "prefer_related_applications": false,
-  "edge_side_panel": {
-    "preferred_width": 400
-  },
-  "scope": "/",
-  "protocol_handlers": [
-    {
-      "protocol": "web+bytelock",
-      "url": "/?action=%s"
     }
   ]
 } 
