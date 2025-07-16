@@ -20,7 +20,9 @@ const APP_ROUTES = [
   '/bancos',
   '/suscripciones',
   '/contabilidad',
-  '/buscar'
+  '/buscar',
+  '/egresos',
+  '/ingresos'
 ];
 
 // Endpoints de API para cachear con estrategia network-first
@@ -29,7 +31,9 @@ const API_ENDPOINTS = [
   '/api/obtener-datos-bancarios',
   '/api/obtener-suscripciones',
   '/api/obtener-ingresos',
-  '/api/obtener-egresos'
+  '/api/obtener-egresos',
+  '/api/eliminar-datos-bancarios',
+  '/api/eliminar-suscripcion'
 ];
 
 // Instalación del Service Worker
@@ -153,8 +157,8 @@ async function networkFirst(request) {
     console.log('Service Worker: Network first for:', request.url);
     const networkResponse = await fetch(request);
     
-    // Cachear respuesta exitosa
-    if (networkResponse.ok) {
+    // Solo cachear respuestas exitosas de peticiones GET
+    if (networkResponse.ok && request.method === 'GET') {
       const cache = await caches.open(DYNAMIC_CACHE_NAME);
       cache.put(request, networkResponse.clone());
     }

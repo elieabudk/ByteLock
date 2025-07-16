@@ -7,15 +7,15 @@ import { BuscarPage } from './features/dashboard/BuscarPage'
 import { BancosPage } from './features/dashboard/BancosPage'
 import { SuscripcionesPage } from './features/dashboard/SuscripcionesPage'
 import { ContabilidadPage } from './features/dashboard/ContabilidadPage'
-import PWAInstallButton from './shared/components/pwa/PWAInstallButton'
+// import PWAInstallButton from './shared/components/pwa/PWAInstallButton' // TEMPORALMENTE DESHABILITADO
 
 function App() {
   const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
   return (
     <>
-      {/* Botón de instalación PWA flotante */}
-      <div style={{ 
+      {/* Botón de instalación PWA flotante - TEMPORALMENTE DESHABILITADO */}
+      {/* <div style={{ 
         position: 'fixed', 
         top: '20px', 
         right: '20px', 
@@ -23,7 +23,7 @@ function App() {
         opacity: 0.9
       }}>
         <PWAInstallButton />
-      </div>
+      </div> */}
       
       <Routes>
         <Route path="/" element={<LoginRuta />} />

@@ -15,7 +15,8 @@ export const API_CONFIG = {
     GUARDAR_INGRESOS: '/api/guardar-ingresos',
     GUARDAR_EGRESOS: '/api/guardar-egresos',
     OBTENER_DATOS_BANCARIOS: '/api/obtener-datos-bancarios',
-    OBTENER_SUSCRIPCIONES: '/api/obtener-suscripciones'
+    OBTENER_SUSCRIPCIONES: '/api/obtener-suscripciones',
+    ELIMINAR_SUSCRIPCION: '/api/eliminar-suscripcion'
   }
 };
 

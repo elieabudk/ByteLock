@@ -8,23 +8,32 @@ import { useEffect, useState } from "react";
 export const DashboardPage = () => {
 
     const [datos, setDatos] = useState([]);
+    const [refresh, setRefresh] = useState(false);
+
+
     const peticion = async () => {
         const datos = await FetchGetDatos("/api/obtener-datos-bancarios");
-        
+        console.log(datos);
         setDatos(datos);
     }
 
     const [datosSuscripciones, setDatosSuscripciones] = useState([]);
     const peticionSuscripciones = async () => {
         const datos = await FetchGetDatos("/api/obtener-suscripciones");
-        
+        console.log(datos);
         setDatosSuscripciones(datos);
     }
+
+    const actualizarDatos = () => {
+        setRefresh(prev => !prev);
+    }
+
+
 
     useEffect(() => {
         peticion();
         peticionSuscripciones();
-    }, []);
+    }, [refresh]);
     
     return (
         <>
@@ -37,6 +46,7 @@ export const DashboardPage = () => {
                 <h2>Bancos</h2>
                 <TableComponent dataTable={datos} tittle="Bancos"
                 columns={["banco", "usuario", "email", "clave", "numeroIBAN","numeroTarjeta","claveCajero","codigoPin"]}
+                onActualizar={actualizarDatos}
                 />
             </div>
         </div>
@@ -44,7 +54,8 @@ export const DashboardPage = () => {
             <div className="table-container">
                 <h2>Suscripciones</h2>
                 <TableComponent dataTable={datosSuscripciones} tittle="Suscripciones"
-                columns={["pagina", "usuario", "email", "clave"]}
+                columns={["pagina", "usuario", "email", "clave", "_id"]}
+                onActualizar={actualizarDatos}
                 />
             </div>
         </div>

@@ -10,7 +10,8 @@ import { obtenerDatosBancarios } from "../controllers/ObtenerDatosBancarios.js";
 import { obtenerSuscripciones } from "../controllers/ObtenerSuscripciones.js";
 import { obtenerEgresos } from "../controllers/ObetenerEgresos.js";
 import { obtenerIngresos } from "../controllers/ObtenerIngreso.js";
-
+import { EliminarSuscripcion } from "../controllers/EliminarSuscripcion.js";
+import { EliminarDatosBancarios } from "../controllers/EliminarDatosBancarios.js";
 const router = Router();
 
 router.post("/google", googleAuth);
@@ -23,5 +24,6 @@ router.get("/obtener-datos-bancarios", authMiddleware, obtenerDatosBancarios);
 router.get("/obtener-suscripciones", authMiddleware, obtenerSuscripciones);
 router.post("/obtener-egresos", authMiddleware, obtenerEgresos);
 router.post("/obtener-ingresos", authMiddleware, obtenerIngresos);
-
+router.post("/eliminar-suscripcion", authMiddleware, EliminarSuscripcion);
+router.post("/eliminar-datos-bancarios", authMiddleware, EliminarDatosBancarios);
 export default router;

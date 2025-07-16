@@ -38,9 +38,10 @@ export const obtenerSuscripciones = async (req, res) => {
             pagina: decrypt(suscripcion.pagina),
             usuario: decrypt(suscripcion.usuario),
             email: decrypt(suscripcion.email),
-            clave: decrypt(suscripcion.clave)
+            clave: decrypt(suscripcion.clave),
+        
         }));
-       
+      
         res.status(200).json(suscripcionesDecrypted);
     } catch (error) {
         console.error('Error al obtener suscripciones:', error);
