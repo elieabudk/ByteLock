@@ -6,6 +6,7 @@ export const TableComponent = ({ dataTable, title, edit = false, columns = [], o
     const [visibleRows, setVisibleRows] = useState({});
     const [showConfirmModal, setShowConfirmModal] = useState(false);
     const [itemToDelete, setItemToDelete] = useState(null);
+    const [isDeleting, setIsDeleting] = useState(false);
 
     // Validación: no renderizar si no hay datos
     if (!dataTable || !Array.isArray(dataTable) || dataTable.length === 0) {
@@ -36,9 +37,28 @@ export const TableComponent = ({ dataTable, title, edit = false, columns = [], o
         setShowConfirmModal(true);
     };
 
-    const handleConfirmDelete = () => {
+    const handleConfirmDelete = async () => {
         if (itemToDelete !== null) {
-            FetchEliminar(itemToDelete, dataTable, onActualizar);
+            setIsDeleting(true);
+            console.log('🔄 Iniciando eliminación desde TableComponent...');
+            
+            try {
+                const result = await FetchEliminar(itemToDelete, dataTable, onActualizar);
+                console.log('✅ Resultado de eliminación:', result);
+                
+                if (result) {
+                    console.log('🎉 Eliminación exitosa');
+                } else {
+                    console.error('❌ Error en la eliminación');
+                    // Aquí podrías mostrar un mensaje de error al usuario
+                    alert('Error al eliminar el elemento. Por favor, intenta de nuevo.');
+                }
+            } catch (error) {
+                console.error('💥 Error inesperado:', error);
+                alert('Error inesperado al eliminar. Por favor, intenta de nuevo.');
+            } finally {
+                setIsDeleting(false);
+            }
         }
         setShowConfirmModal(false);
         setItemToDelete(null);
@@ -130,8 +150,20 @@ export const TableComponent = ({ dataTable, title, edit = false, columns = [], o
                                 <button type="button" className="btn btn-secondary" onClick={handleCancelDelete}>
                                     Cancelar
                                 </button>
-                                <button type="button" className="btn btn-danger" onClick={handleConfirmDelete}>
-                                    Eliminar
+                                <button 
+                                    type="button" 
+                                    className="btn btn-danger" 
+                                    onClick={handleConfirmDelete}
+                                    disabled={isDeleting}
+                                >
+                                    {isDeleting ? (
+                                        <>
+                                            <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                            Eliminando...
+                                        </>
+                                    ) : (
+                                        'Eliminar'
+                                    )}
                                 </button>
                             </div>
                         </div>

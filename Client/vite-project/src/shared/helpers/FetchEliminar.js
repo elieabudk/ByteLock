@@ -1,66 +1,97 @@
+import { buildApiUrl } from '../../config/api.js';
+
 export const FetchEliminar = async (index, dataTable, onActualizar) => {
     // Validaciones para evitar errores
-    
     if (!dataTable || !Array.isArray(dataTable) || index < 0 || index >= dataTable.length) {
         console.error('Error: dataTable inválido o índice fuera de rango');
-        return;
+        return false;
     }
     
     const item = dataTable[index];
     if (!item || !item._id) {
         console.error('Error: item inválido o sin _id');
-        return;
+        return false;
     }
     
     const itemId = item._id;
     const token = localStorage.getItem('token');
     
-
-
-
-    // primero revisamos el header de la table y si tiene la palabra banco y numero IBAN entonces hacemos la peticion a la api de eliminar-datos-bancarios
-    // si tiene la palabra pagina entonces hacemos la peticion a la api de eliminar-suscripciones
-    try {
-    if (item.banco && item.numeroIBAN) {
-        const response = await fetch(`http://localhost:3000/api/eliminar-datos-bancarios`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ _id: itemId })
-        });
-        if (response.ok) {
-            if (typeof onActualizar === 'function') {
-                onActualizar();
-            }
-        }
-    } else if (item.pagina) {
-        const response = await fetch(`http://localhost:3000/api/eliminar-suscripcion`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ _id: itemId })
-        });
-
-        if (response.ok) {
-            if (typeof onActualizar === 'function') {
-                onActualizar();
-            }
-        }
+    if (!token) {
+        console.error('Error: No hay token de autenticación');
+        return false;
     }
-    
- 
-    
-    
-} catch (error) {
-    console.error('Error al eliminar:', error);
-}
 
-   
-    
-    
+    console.log('🗑️ Eliminando item:', { itemId, item });
 
+    try {
+        let endpoint = '';
+        let apiUrl = '';
+        
+        // Determinar el endpoint correcto basado en los datos del item
+        if (item.banco && item.numeroIBAN) {
+            endpoint = '/api/eliminar-datos-bancarios';
+            console.log('📱 Eliminando datos bancarios');
+        } else if (item.pagina) {
+            endpoint = '/api/eliminar-suscripcion';
+            console.log('📱 Eliminando suscripción');
+        } else {
+            console.error('Error: No se pudo determinar el tipo de elemento a eliminar');
+            return false;
+        }
+        
+        // Construir URL usando la configuración de API
+        apiUrl = buildApiUrl(endpoint);
+        console.log('🌐 URL de eliminación:', apiUrl);
+        
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ _id: itemId })
+        });
+        
+        console.log('📡 Respuesta del servidor:', {
+            status: response.status,
+            statusText: response.statusText,
+            ok: response.ok
+        });
+        
+        if (response.ok) {
+            // Verificar el contenido de la respuesta
+            const responseData = await response.json();
+            console.log('✅ Respuesta exitosa:', responseData);
+            
+            // Ejecutar callback de actualización
+            if (typeof onActualizar === 'function') {
+                console.log('🔄 Actualizando datos...');
+                onActualizar();
+            }
+            
+            return true;
+        } else {
+            // Manejar errores HTTP
+            const errorData = await response.json().catch(() => ({ message: 'Error desconocido' }));
+            console.error('❌ Error del servidor:', {
+                status: response.status,
+                statusText: response.statusText,
+                errorData
+            });
+            
+            return false;
+        }
+        
+    } catch (error) {
+        console.error('💥 Error de red o excepción:', error);
+        
+        // Información adicional para debugging en móviles
+        console.error('🔍 Debug info:', {
+            userAgent: navigator.userAgent,
+            online: navigator.onLine,
+            connection: navigator.connection?.effectiveType || 'unknown'
+        });
+        
+        return false;
+    }
 }
